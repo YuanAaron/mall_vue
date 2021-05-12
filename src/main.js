@@ -5,6 +5,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios' 
 import App from './App.vue'
 import router from './router'
+import env from './env'
 
 Vue.use(VueAxios,axios);
 Vue.config.productionTip = false
@@ -17,6 +18,8 @@ Vue.config.productionTip = false
  */
 //根据前端的跨域方式做出调整（适用于接口代理）
 axios.defaults.baseURL = '/api';
+//根据环境变量获取不同的请求地址(适用于CORS和JSONP)
+axios.defaults.baseURL = env.baseURL;
 axios.defaults.timeout = 8000;
 
 //请求值统一处理
